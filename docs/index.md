@@ -1,4 +1,5 @@
 ---
+layout: page
 ---
 
 # Addressable Towns in Burke NC
@@ -22,17 +23,6 @@ Morganton address:
 
 ## List of Unaddressables
 
-<style>
-div.ulist {max-height:20rem; overflow:auto;}
-</style>
-
-{% for item in site.data.unaddressable %}
-{% assign key = item[0] %}
-{% assign val = item[1] %}
-<h2>{{ key }}</h2>
-<div class="ulist">
-{% include datatable.html data=val %}
-</div>
-{% endfor %}
+{%- include unaddressable.html -%}
 
 [mapunaddressables]: map.html

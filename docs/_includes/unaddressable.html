@@ -1,0 +1,30 @@
+
+<style scoped>
+p.navcsv { text-align:center; }
+.navcsv a { display: inline-block; border: solid 1px; border-radius: 8px; padding: 2px 6px; text-decoration:none; margin: 4px 6px; text-transform: capitalize; }
+.navcsv sup { padding-left: 6px; }
+
+div.ulist {max-height:20rem; overflow:auto;}
+table.dt {margin: 0 auto; }
+.dt td {text-transform: capitalize; }
+.col1 { width:18rem; }
+.col2 { width:12rem; text-align:center; }
+.col3 { width:6rem; text-align:center; }
+</style>
+
+<p class="navcsv">
+{%- for item in site.data.info.unaddressable -%}
+{%- assign key = item[0] -%}
+{%- assign val = item[1] -%}
+<a href="#{{ key | downcase | replace: " ", "_" }}">{{ key | downcase }}<sup>{{ val }}</sup></a>
+{%- endfor -%}
+</p>
+
+{%- for item in site.data.unaddressable -%}
+{%- assign key = item[0] -%}
+{%- assign val = item[1] -%}
+<h3>{{ key }}</h3>
+<div class="ulist">
+{%- include datatable.html data=val -%}
+</div>
+{%- endfor -%}

@@ -11,7 +11,8 @@ function InitBurkeMap(src) {
 			sources: {
 				"unaddressable": {
 					type: "vector",
-					url: `pmtiles://${PMTILES_URL}`
+					url: `pmtiles://${PMTILES_URL}`,
+					attribution: '<a href="https://burkerivertrail.net/whats-in-an-address/">Burke River Trail</a>'
 				}
 			},
 			layers: [
@@ -61,9 +62,9 @@ function InitBurkeMap(src) {
 					"type": "line",
 					"source": "unaddressable",
 					"source-layer": "roads",
-					"paint": {"line-color": ["case",
-						["<",["get","CLASS"],4], "orange",
-						"#888"]
+					"paint": {
+						"line-color": ["case",["<",["get","CLASS"],4], "orange","#888"],
+						"line-width": ["interpolate",["exponential", 2],["zoom"],12,1,22,250]
 					}
 				},
 				{
@@ -79,6 +80,8 @@ function InitBurkeMap(src) {
 		zoom: 10
 	});
 
+	map.addControl(new maplibregl.FullscreenControl(), 'top-right');
+
 	map.on('click', function(e) {
 		const bbox = [[e.point.x - 1, e.point.y - 1], [e.point.x + 1, e.point.y + 1]];
 		const features = map.queryRenderedFeatures(bbox);
@@ -86,12 +89,21 @@ function InitBurkeMap(src) {
 
 		const d = [];
 		features.forEach((feature) => {
-            d.unshift(`<p>${feature.layer.id}<br>${JSON.stringify(feature.properties, null, 2)}</p>`);
+			let prop = feature.properties;
+			const p = [];
+			p.push('<p>');
+            p.push(`<b>${feature.layer.id}</b>`);
+			if (prop.NAME) p.push(`: ${prop.NAME}`);
+			else if (prop.FULLNAME) p.push(`: ${prop.FULLNAME}`);
+			else if (prop.ADDRESS) p.push(`<br><span>${prop.ADDRESS}<br><s>${prop.CITYLIM}</s> <i>${prop.CITY}</i><br>${prop.ZIPCODE}</span>`);
+			else if (prop.length) p.push(`<br><span>${JSON.stringify(feature.properties, null, 2)}</span>`);
+			p.push('</p>');
+			d.unshift(p.join(''));
 		});
 
 		new maplibregl.Popup()
 			.setLngLat(e.lngLat)
-			.setHTML('<div style="max-height:50vh;overflow:auto">'+d.join('')+'</div>')
+			.setHTML('<div class="addrpop">'+d.join('')+'</div>')
 			.addTo(map);
 	});
 }

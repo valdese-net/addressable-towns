@@ -1,10 +1,11 @@
 
 <style scoped>
-p.navcsv { text-align:center; }
-.navcsv a { display: inline-block; border: solid 1px; border-radius: 8px; padding: 2px 6px; text-decoration:none; margin: 4px 6px; text-transform: capitalize; }
-.navcsv sup { padding-left: 6px; }
+p.navcsv { text-align:center; position: sticky; top: 0; z-index: 1000; background-color: #f8f9fa; padding: 0.5rem 0; margin: 0; border-bottom: solid 1px #ccc; }
+.navcsv a { display: inline-block; border: solid 1px; border-radius: 8px; padding: 2px 4px; text-decoration:none; margin: 4px; text-transform: capitalize; }
+.navcsv sup { padding-left: 3px; font-size:x-small; vertical-align: super;}
 
-div.ulist {max-height:20rem; overflow:auto;}
+.townlist h3 {padding-top:6rem;}
+div.addrlist {max-height:20rem; overflow:auto; }
 table.dt {margin: 0 auto; }
 .dt td {text-transform: capitalize; }
 .col1 { width:18rem; }
@@ -16,15 +17,17 @@ table.dt {margin: 0 auto; }
 {%- for item in site.data.info.unaddressable -%}
 {%- assign key = item[0] -%}
 {%- assign val = item[1] -%}
-<a href="#{{ key | downcase | replace: " ", "_" }}">{{ key | downcase }}<sup>{{ val }}</sup></a>
+<a href="#id_{{ key | downcase | replace: " ", "_" }}">{{ key | downcase }}<sup>{{ val }}</sup></a>
 {%- endfor -%}
 </p>
 
+<div class="townlist">
 {%- for item in site.data.unaddressable -%}
 {%- assign key = item[0] -%}
 {%- assign val = item[1] -%}
-<h3>{{ key }}</h3>
-<div class="ulist">
+<h3 id="id_{{ key | downcase }}">{{ key }}</h3>
+<div class="addrlist">
 {%- include datatable.html data=val -%}
 </div>
 {%- endfor -%}
+</div>

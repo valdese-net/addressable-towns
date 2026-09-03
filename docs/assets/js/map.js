@@ -72,7 +72,10 @@ function InitBurkeMap(src) {
 					"type": "circle",
 					"source": "unaddressable",
 					"source-layer": "unaddressable",
-					"paint": { "circle-color": "red" }
+					"paint": {
+						"circle-color": "red",
+						"circle-radius": ["interpolate",["exponential", 2],["zoom"],12,3,22,350]
+					}
 				},
 			]
 		},

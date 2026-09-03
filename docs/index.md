@@ -1,8 +1,9 @@
 ---
-layout: page
 ---
 
 # Addressable Towns in Burke NC
+
+Inspired by [What’s in an Address?](https://burkerivertrail.net/whats-in-an-address/) post by the Burke River Trail Association.
 
 In Burke NC, the postal service has recently adopted a system which forces all area property
 to identify itself using the host city of a terminating postal delivery node. In other words,

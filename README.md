@@ -15,6 +15,8 @@ Morganton address:
 
 This project seeks to analyze the scope and scale of this change.
 
+Inspired by [What’s in an Address?](https://burkerivertrail.net/whats-in-an-address/) post by the Burke River Trail Association.
+
 ## Burke GIS Data
 
 New Burke GIS data was just released on 2026-08-28. This new data already reflects this new postal
@@ -32,16 +34,3 @@ For QGIS, the following expression can be used:
 
 This query eliminates the parcels that are not within a municipal jurisdiction, then matches
 on all addresses that do not use the jurisdictional city for address identification.
-
-## Zip Code Mapping
-
-The postal service does not seem to publish any data details of its routing network, other than its specific
-instructions for each address. However, the nconemap.gov site does have some ZIP boundary data if maps are
-desired.
-
-- Zip Code Conty Conflicts (not sure what this is, but indicates that ncone has a ZIP boundary layer dataset)
-https://www.nconemap.gov/datasets/977e2e6773ad460c95f46c803aa16722_11/explore?filters=eyJjb3VudHkiOlsiQlVSS0UiXX0%3D&location=35.785047%2C-81.658527%2C12
-
-- The ZIP Code GDB is embedded in the following download
-https://www.nconemap.gov/documents/d2d4d4e600704d4ebb7d29454f744293/explore
-

@@ -3,7 +3,7 @@
 
 # Addressable Towns in Burke NC
 
-Inspired by [What’s in an Address?](https://burkerivertrail.net/whats-in-an-address/) post by the Burke River Trail Association.
+Inspired by [What’s in an Address?][BRTAPost] post by the Burke River Trail Association.
 
 In Burke NC, the postal service has recently adopted a system which forces all area property
 to identify itself using the host city of a terminating postal delivery node. In other words,
@@ -18,12 +18,19 @@ Morganton address:
  MORGANTON NC 28655
  ```
 
-## Map of Unaddressables
+## Results
 
-[Map of Unaddressables][mapunaddressables]: A map showing points for all Burke GIS identified addresses that are not identified by their jurisdictional town.
+- [Map][PageMap]
+- [Address List][PageList]
 
-## List of Unaddressables
+## References
 
-{%- include unaddressable.html -%}
+- [Addressable Towns on Github][SourceSite]
+- [Burke NC Data][BurkeData]
+- [What’s in an Address?][BRTAPost]
 
-[mapunaddressables]: map.html
+[SourceSite]: {{ site.github.repository_url }}
+[BRTAPost]: https://burkerivertrail.net/whats-in-an-address/
+[BurkeData]: https://www.burkenc.org/2495/Data-Sets
+[PageMap]: map.html
+[PageList]: list.html

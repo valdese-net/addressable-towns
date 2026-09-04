@@ -5,7 +5,6 @@ p.navcsv { text-align:center; position: sticky; top: 0; z-index: 1000; backgroun
 .navcsv sup { padding-left: 3px; font-size:x-small; vertical-align: super;}
 
 .townlist h3 {padding-top:6rem;}
-div.addrlist {max-height:20rem; overflow:auto; }
 table.dt {margin: 0 auto; }
 .dt td {text-transform: capitalize; }
 .col1 { width:18rem; }
@@ -14,6 +13,7 @@ table.dt {margin: 0 auto; }
 </style>
 
 <p class="navcsv">
+<a href="/">&lt;- Home</a>
 {%- for item in site.data.info.unaddressable -%}
 {%- assign key = item[0] -%}
 {%- assign val = item[1] -%}

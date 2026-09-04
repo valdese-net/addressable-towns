@@ -1,6 +1,63 @@
 ---
 layout: default
 title: List of Untowned Addresses
+fullwidth: true
 ---
-<p style="text-align:center;"><a href="{{ site.github.repository_url }}/tree/main/docs/_data/unaddressable">CSV Source Files</a></p>
-{%- include unaddressable.html -%}
+<style>
+.townlist h3 {padding-top:6rem; text-align:center;}
+div.addrlist {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+	margin:0;
+	padding:0;	
+}
+.addrlist p {
+	display: grid;
+	grid-template-areas:
+		"a a"
+		"b c";
+	margin: 3px;
+	padding: 5px;
+	border: 0;
+	border-radius:8px;
+	background:#c8e1e9;
+}
+.addrlist p i {font-style: normal; text-decoration: none;}
+.addrlist p i:nth-child(1) {grid-area: a;}
+.addrlist p i:nth-child(2) {grid-area: b;}
+.addrlist p i:nth-child(3) {grid-area: c; text-align:right;}
+{%- for item in site.data.unaddressable -%}
+{%- assign townname = item[0] | replace: "_", " " -%}
+{%- assign townid = item[0] | downcase -%}
+.{{ townid }} p i:nth-child(2)::before { content: "{{ townname }}"; padding-right: 0.5rem; font-style: italic; text-decoration: line-through; font-size: small;}
+{%- endfor -%}
+</style>
+
+<nav class="btnbar"><a href="./">&lt;- Home</a><a href="{{ site.github.repository_url }}/tree/main/docs/_data/unaddressable">CSV Source Files</a></nav>
+
+<nav class="stickytop btnbar">
+{%- for item in site.data.info.unaddressable -%}
+{%- assign key = item[0] -%}
+{%- assign val = item[1] -%}
+<a href="#id_{{ key | downcase | replace: " ", "_" }}">{{ key | downcase }}<sup>{{ val }}</sup></a>
+{%- endfor -%}
+</nav>
+
+<div class="townlist">
+{%- for item in site.data.unaddressable -%}
+{%- assign townname = item[0] | replace: "_", " " -%}
+{%- assign townkey = item[0] -%}
+{%- assign townaddrlist = item[1] -%}
+<h3 id="id_{{ townkey | downcase }}">{{ townname }}</h3>
+<div class="addrlist {{ townkey | downcase }}">
+{%- for row in townaddrlist -%}
+	<p>
+	{%- for pair in row -%}
+		<i>{{- pair[1] -}}</i>
+	{%- endfor -%}
+	</p>
+{%- endfor -%}
+</div>
+{%- endfor -%}
+</div>
+

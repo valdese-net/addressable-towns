@@ -12,11 +12,7 @@ all delivery addresses, regardless of a property's municipal jurisidiction. This
 ridiculous address assertions, such as the Drexel Town Hall now being identified with a
 Morganton address:
 
-```
- Drexel Town Hall
- 202 Church Street
- MORGANTON NC 28655
- ```
+> Drexel Town Hall<br>202 Church Street<br>~~DREXEL~~ MORGANTON NC 28655
 
 ## Results
 

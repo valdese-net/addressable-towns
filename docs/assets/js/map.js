@@ -12,7 +12,7 @@ function InitBurkeMap(src) {
 				"unaddressable": {
 					type: "vector",
 					url: `pmtiles://${PMTILES_URL}`,
-					attribution: '<a href="https://burkerivertrail.net/whats-in-an-address/">Burke River Trail</a> | <a href="https://www.burkenc.org/2495/Data-Sets">Burke NC</a> | <a href="/">Addressable Towns</a>'
+					attribution: '<a href="https://burkerivertrail.net/whats-in-an-address/">Burke River Trail</a> | <a href="https://www.burkenc.org/2495/Data-Sets">Burke NC</a> | <a href="./">Addressable Towns</a>'
 				}
 			},
 			layers: [

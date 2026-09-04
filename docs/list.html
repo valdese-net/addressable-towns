@@ -7,7 +7,7 @@ fullwidth: true
 .townlist h3 {padding-top:6rem; text-align:center;}
 div.addrlist {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 	margin:0;
 	padding:0;	
 }
@@ -22,14 +22,14 @@ div.addrlist {
 	border-radius:8px;
 	background:#c8e1e9;
 }
-.addrlist p i {font-style: normal; text-decoration: none;}
-.addrlist p i:nth-child(1) {grid-area: a;}
+.addrlist p i {font-style: normal; text-decoration: none; overflow: hidden; text-overflow: ellipsis; align-self: center;}
+.addrlist p i:nth-child(1) {grid-area: a; white-space: nowrap;}
 .addrlist p i:nth-child(2) {grid-area: b;}
 .addrlist p i:nth-child(3) {grid-area: c; text-align:right;}
 {%- for item in site.data.unaddressable -%}
 {%- assign townname = item[0] | replace: "_", " " -%}
 {%- assign townid = item[0] | downcase -%}
-.{{ townid }} p i:nth-child(2)::before { content: "{{ townname }}"; padding-right: 0.5rem; font-style: italic; text-decoration: line-through; font-size: small;}
+.{{ townid }} p i:nth-child(2)::before { content: "{{ townname }} "; padding-right: 0.2rem; font-style: italic; text-decoration: line-through; font-size: small;}
 {%- endfor -%}
 </style>
 
@@ -53,7 +53,11 @@ div.addrlist {
 {%- for row in townaddrlist -%}
 	<p>
 	{%- for pair in row -%}
+	{%- if forloop.index == 2 -%}
+		<i>{{- pair[1] | replace: " ", "&nbsp;" -}}</i>
+	{%- else -%}
 		<i>{{- pair[1] -}}</i>
+	{%- endif -%}
 	{%- endfor -%}
 	</p>
 {%- endfor -%}

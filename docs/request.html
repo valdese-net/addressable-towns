@@ -1,0 +1,68 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Addressable Towns</title>
+<style>
+@media print {
+section { break-before: page; }
+section p {break-inside: avoid;}
+}
+
+div.addrlist {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	margin:0;
+	padding:0;	
+}
+.addrlist p {
+	display: grid;
+	grid-template-areas:
+		"a"
+		"b";
+	margin: 3px;
+	padding: 5px;
+	border: solid 1px #ccc;
+	border-radius:4px;
+}
+.addrlist p i {font-size:12px; white-space: nowrap; font-style: normal; text-decoration: none; overflow: hidden; text-overflow: ellipsis; align-self: center;}
+.addrlist p i:nth-child(1) {grid-area: a;}
+.addrlist p i:nth-child(2) {grid-area: b;}
+{%- for item in site.data.unaddressable -%}
+{%- assign townname = item[0] | replace: "_", " " -%}
+{%- assign townid = item[0] | downcase -%}
+.{{ townid }} p i:nth-child(2)::before { content: "{{ townname }} NC "; }
+{%- endfor -%}
+
+</style>
+</head>
+<body>
+{%- for towndata in site.data.unaddressable -%}
+	{%- assign townkey = towndata[0] -%}
+	{%- assign townname = townkey | replace: "_", " " -%}
+	{%- assign townaddrlist = towndata[1] -%}
+	{%- assign all_zipcodes = townaddrlist | map: "ZIPCODE" | uniq -%}
+	<section  class="{{ townkey | downcase }}">
+	<h1>{{ townname }}</h1>
+	<p>{{ townname }} requests that the following ZIP code(s) fully support mail delivery within its jurisdictional boundary using address data that correctly identifies a {{ townname }} address:
+	<ul>
+	{%- for item in all_zipcodes -%}
+		<li>{{ item }}</li>
+	{%- endfor -%}
+	</ul>
+	</p>
+
+	<p>{{ townname }} addresses include:</p>
+	<div class="addrlist">
+	{%- for line in townaddrlist -%}
+		<p><i>{{ line.ADDRESS }}</i><i>{{ line.ZIPCODE }}</i></p>
+	{%- endfor -%}
+	</div>
+	</section>
+{%- endfor -%}
+
+</body>
+</html>

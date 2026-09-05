@@ -18,6 +18,7 @@ Morganton address:
 
 - [Map][PageMap]
 - [Address List][PageList]
+- [Town Request Starter Kit][PageRequestLetter]{:target="_blank"}
 
 ## References
 
@@ -30,3 +31,4 @@ Morganton address:
 [BurkeData]: https://www.burkenc.org/2495/Data-Sets
 [PageMap]: map.html
 [PageList]: list.html
+[PageRequestLetter]: request.html

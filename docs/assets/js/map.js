@@ -1,4 +1,21 @@
+const town2latlng = {
+	"glen alpine": [-81.778793,35.727702],
+	"morganton": [-81.685066,35.745119],
+	"drexel": [-81.605051,35.757474],
+	"valdese": [-81.562843,35.74289],
+	"rutherford college": [-81.523876,35.750552],
+	"connelly springs": [-81.502762,35.740382],
+	"rhodhiss": [-81.432206,35.76711],
+	"hildebran": [-81.421223,35.71488],
+	"long view": [-81.39204,35.730767],
+	"hickory": [-81.342856,35.733153]
+};
+
 function InitBurkeMap(src) {
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const showOnlyTown = urlParams.get('town');
+
 	const protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol("pmtiles", protocol.tile);
 	const PMTILES_URL = src; 
@@ -68,10 +85,30 @@ function InitBurkeMap(src) {
 					}
 				},
 				{
+					"id": "roadlabel",
+					"type": "symbol",
+					"source": "unaddressable",
+					"source-layer": "roads",
+					"filter": ["all",[">",["zoom"],11],["has","FULLNAME"]],
+					"layout": {
+						"text-field": ["get","FULLNAME"],
+						"text-size": ["interpolate",["exponential", 2],["zoom"],11,8,22,300],
+						"symbol-placement": "line",
+						"symbol-spacing": 500,
+					},
+					"paint": {
+						"text-color": "white",
+						"text-halo-color": "black",
+						"text-halo-width": 2,
+						"text-halo-blur": 3
+					}
+				},
+				{
 					"id": "unaddressable",
 					"type": "circle",
 					"source": "unaddressable",
 					"source-layer": "unaddressable",
+					"filter": showOnlyTown ? ['==', ['upcase', ['get','CITYLIM']], showOnlyTown.toUpperCase()] : true,
 					"paint": {
 						"circle-color": "red",
 						"circle-radius": ["interpolate",["exponential", 2],["zoom"],12,3,22,350]
@@ -109,4 +146,13 @@ function InitBurkeMap(src) {
 			.setHTML('<div class="addrpop">'+d.join('')+'</div>')
 			.addTo(map);
 	});
+	
+	if (showOnlyTown) {
+		const townname = showOnlyTown.toLowerCase();
+		if (town2latlng[townname]) {
+			map.flyTo({center: town2latlng[townname], zoom: 14, duration:3500});
+		}
+	}
+
+	return map;
 }

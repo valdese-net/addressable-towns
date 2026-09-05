@@ -61,7 +61,6 @@ if not os.path.exists(fn_townlimits):
 
 if not os.path.exists(fn_roads):
 	force_pmtiles = True
-	#subprocess.run(f"ogr2ogr -f GeoJSON -t_srs EPSG:4326 -select \"SRNUM,CLASS,FULLNAME\" -where \"(CLASS IS NOT NULL) AND (CLASS <= 3)\" {fn_roads} {gisdata} RoadCenterlines", shell=True)
 	subprocess.run(f"ogr2ogr -f GeoJSON -t_srs EPSG:4326 -select \"SRNUM,CLASS,FULLNAME\" -where \"(CLASS IS NOT NULL)\" {fn_roads} {gisdata} RoadCenterlines", shell=True)
 
 # make pmtiles for a map of obstacles to proper addressable towns

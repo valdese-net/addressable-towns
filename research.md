@@ -18,4 +18,4 @@ This can be looked up individually here:
 - https://tools.usps.com/zip-code-lookup.htm?citybyzipcode
 
 It is unclear why this existing mechanism has not been implemented for all Burke County towns,
-but seems to be the logical path to resoving addressability issues.
+but seems to be the logical path to resolving addressability issues.

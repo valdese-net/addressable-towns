@@ -33,7 +33,7 @@ div.addrlist {
 {%- endfor -%}
 </style>
 
-<nav class="btnbar"><a href="./">&lt;- Home</a><a href="{{ site.github.repository_url }}/tree/main/docs/_data/unaddressable">CSV Source Files</a></nav>
+<nav class="btnbar"><a href="./">&#9664 Home</a><a href="{{ site.github.repository_url }}/tree/main/docs/_data/unaddressable">CSV Source Files</a></nav>
 
 <nav class="stickytop btnbar">
 {%- for item in site.data.info.unaddressable -%}
@@ -49,6 +49,7 @@ div.addrlist {
 {%- assign townkey = item[0] -%}
 {%- assign townaddrlist = item[1] -%}
 <h3 id="id_{{ townkey | downcase }}">{{ townname }}</h3>
+<p class="btnbar"><a href="./map.html?town={{ townname | downcase | cgi_escape }}">View on Map</a></p>
 <div class="addrlist {{ townkey | downcase }}">
 {%- for row in townaddrlist -%}
 	<p>

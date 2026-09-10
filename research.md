@@ -11,11 +11,3 @@ https://www.nconemap.gov/datasets/977e2e6773ad460c95f46c803aa16722_11/explore?fi
 
 - The ZIP Code GDB is embedded in the following download
 https://www.nconemap.gov/documents/d2d4d4e600704d4ebb7d29454f744293/explore
-
-The US Postal Service does have a mechanism to support delivery to other jurisdictional towns outside of the the delivery office's host city. 
-This can be looked up individually here:
-
-- https://tools.usps.com/zip-code-lookup.htm?citybyzipcode
-
-It is unclear why this existing mechanism has not been implemented for all Burke County towns,
-but seems to be the logical path to resolving addressability issues.

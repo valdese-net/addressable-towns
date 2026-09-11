@@ -21,7 +21,7 @@ ogr2ogr -f CSV -t_srs EPSG:4326 -lco GEOMETRY=AS_XY \
 {fn_rawunaddressable} {gisdata} SiteStructureAddressPoints
 """
 
-# using the Burke GIS data, gather the addresses that have improperly been identified with the wrong muncipality
+# using the Burke GIS data, gather the addresses that have improperly been identified with the wrong municipality
 if not os.path.exists(fn_rawunaddressable):
 	force_pmtiles = True
 	subprocess.run(make_wrongaddresscsv, shell=True)
@@ -52,7 +52,7 @@ for town, addresses in byCity.items():
 		with open(fn, "w", newline='') as out:
 			writer = csv.writer(out, quoting=csv.QUOTE_MINIMAL)
 			writer.writerow(['ADDRESS', 'CITY', 'ZIPCODE'])
-			for addr in addresses:
+			for addr in sorted(addresses, key=lambda x: (x.ZIPCODE, x.ADDRESS)):
 				writer.writerow([addr.ADDRESS,addr.CITY,addr.ZIPCODE])
 
 if not os.path.exists(fn_townlimits):

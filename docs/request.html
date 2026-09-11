@@ -47,7 +47,8 @@ div.addrlist {
 	{%- assign all_zipcodes = townaddrlist | map: "ZIPCODE" | uniq -%}
 	<section  class="{{ townkey | downcase }}">
 	<h1>{{ townname }}</h1>
-	<p>{{ townname }} requests that the following ZIP code(s) fully support mail delivery within its jurisdictional boundary using address data that correctly identifies a {{ townname }} address:
+	<p>Pursuant to Section 2.1.1 of the Domestic Mail Manual (DMM), "City Delivery Service, Establishment"</p>
+	<p>The Town of {{ townname }} requests that the following ZIP code(s) fully support mail delivery within its jurisdictional boundary using address data that correctly identifies a {{ townname }} address:
 	<ul>
 	{%- for item in all_zipcodes -%}
 		<li>{{ item }}</li>

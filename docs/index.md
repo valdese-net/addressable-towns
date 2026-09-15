@@ -32,14 +32,18 @@ Morganton address:
 
 ## References
 
-- [Burke NC Data][BurkeData]{:target="_blank"}
+- [Burke GIS][GISBurke]{:target="_blank"}
+- [Caldwell GIS][GISCaldwell]{:target="_blank"}
+- [Catawba GIS][GISCatawba]{:target="_blank"}
 - [Domestic Mail Manual (DMM) City Delivery Service][DMM]{:target="_blank"}
 - [Addressable Towns on Github][SourceSite]
 - [What’s in an Address?][BRTAPost]
 
 [SourceSite]: {{ site.github.repository_url }}
 [BRTAPost]: https://burkerivertrail.net/whats-in-an-address/
-[BurkeData]: https://www.burkenc.org/2495/Data-Sets
+[GISBurke]: https://www.burkenc.org/2495/Data-Sets
+[GISCaldwell]: https://gis.caldwellcountync.org/arcgis/rest/services
+[GISCatawba]: https://arcgis2.catawbacountync.gov/arcgis/rest/services/catawba/Basemap/FeatureServer
 [DMM]: https://pe.usps.com/text/dmm300/508.htm#a_2_0
 [PageMap]: map.html
 [PageList]: list.html

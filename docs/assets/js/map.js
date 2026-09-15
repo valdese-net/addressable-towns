@@ -1,4 +1,4 @@
-const town2latlng = {
+const town2lnglat = {
 	"glen alpine": [-81.778793,35.727702],
 	"morganton": [-81.685066,35.745119],
 	"drexel": [-81.605051,35.757474],
@@ -149,8 +149,8 @@ function InitBurkeMap(src) {
 	
 	if (showOnlyTown) {
 		const townname = showOnlyTown.toLowerCase();
-		if (town2latlng[townname]) {
-			map.flyTo({center: town2latlng[townname], zoom: 14, duration:3500});
+		if (town2lnglat[townname]) {
+			map.flyTo({center: town2lnglat[townname], zoom: 14, duration:3500});
 		}
 	}
 

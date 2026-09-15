@@ -22,7 +22,7 @@ be taken to perform case insensitive filters.
 
 The impacted addresses are easy to identify with a SQL where clause:
 
-`(CITYLIM LIKE '%') and (NOT CITYLIM ILIKE 'burke') and (NOT CITYLIM ILIKE CITY)`
+`(upper(CITYLIM) LIKE '%') and (upper(CITYLIM) <> 'BURKE') and (upper(CITYLIM) <> upper(CITY))`
 
 For QGIS, the following expression can be used:
 
